@@ -1,0 +1,34 @@
+{
+  "name": "my-vercel",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "devDependencies": {
+    "@vercel/node": "^1.7.1",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.6.3",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
+    "babel-eslint": "^10.1.0",
+    "ncp": "2.0.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "mongodb": "^3.5.9"
+  },
+  "scripts": {
+    "build": "npm-run-all clean compile:all",
+    "clean": "rimraf ./build && mkdir build",
+    "compile:movieapi": "babel ./api/movies --out-dir build/api/movies",
+    "compile:tvapi": "babel ./api/tv --out-dir build/api/tv",
+    "compile:peopleapi": "babel ./api/people --out-dir build/api/people",
+    "compile:db": "babel ./db --out-dir build/db",
+    "compile:api": "babel ./api/ --out-dir build/api",
+    "copy:nodeModules": "ncp ./node_modules/ build/node_modules",
+    "copy:public": "ncp ./public build/public",
+    "copy:all": "npm-run-all copy:nodeModules copy:public",
+    "compile:all": "npm-run-all compile:api compile:movieapi compile:tvapi compile:peopleapi compile:db copy:all"
+  }
+}

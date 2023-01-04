@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/movies/:id",
+      "destination": "/api/movies/:id"
+    },
+    {
+      "source": "/tv/:id",
+      "destination": "/api/tv/:id"
+    },
+    {
+      "source": "/people/:id",
+      "destination": "/api/people/:id"
+    }
+  ]
+}
